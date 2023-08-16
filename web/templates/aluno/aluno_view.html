@@ -1,0 +1,73 @@
+{% extends 'aluno/base.html' %}
+
+{% block title %}
+    <title>Dados do Aluno</title>
+{% endblock %}
+
+{% block body %}
+    <body>
+        {% if content.alunos %}
+            <div class="d-flex justify-content-center">
+                <!--<i class="fa fa-address-card-o" style="font-size:48px;color:blue"></i>-->
+                <h1>Lista de Alunos</h1>
+            </div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Idade</th>
+                        <th scope="col">Data Nasc.</th>
+                        <th scope="col">Escolaridade</th>
+                        <th scope="col">Escola</th>
+                        <th scope="col">Estuda</th>
+                        <th scope="col">Responsavel</th>
+                        <th scope="col">Tel. Resp.</th>
+                        <th scope="col">Instagram</th>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Rua</th>
+                        <th scope="col">Bairro</th>
+                        <th scope="col">CEP</th>
+                        <th scope="col">Cidade</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Visitante</th>
+                        <th scope="col">Pais</th>
+                        <th scope="col">Datahora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for aluno in content.alunos %}
+                        <tr>
+                            <th scope="row">{{aluno.IDALUNO}}</th>
+                            <td>{{aluno.NOME}}</td>
+                            <td>{{aluno.IDADE}}</td>
+                            <td>{{aluno.DATANASCIMENTO}}</td>
+                            <td>{{aluno.ESCOLARIDADE}}</td>
+                            <td>{{aluno.NOMEESCOLA}}</td>
+                            <td>{{aluno.HORARIOESTUDA}}</td>
+                            <td>{{aluno.NOMERESPONSAVEL}}</td>
+                            <td>{{aluno.TELEFONERESPONSAVEL}}</td>
+                            <td>{{aluno.INSTAGRAMRESPONSAVEL}}</td>
+                            <td>{{aluno.FOTO}}</td>
+                            <td>{{aluno.RUA}}</td>
+                            <td>{{aluno.BAIRRO}}</td>
+                            <td>{{aluno.CEP}}</td>
+                            <td>{{aluno.CIDADE}}</td>
+                            <td>{{aluno.ESTADO}}</td>
+                            {% if aluno.ISVISITANTE == 0 %}
+                                <td>Não</td>
+                            {% else %}
+                                <td>Não</td>
+                            {% endif %}
+                            <td>{{aluno.PAIS}}</td>
+                            <td>{{aluno.DATAHORA}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h1>Não foi possível consultar todos os alunos</h1>
+            <p>{{content.error}}</p>
+        {% endif %}
+    </body>
+{% endblock %}
