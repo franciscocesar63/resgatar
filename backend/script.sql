@@ -34,9 +34,18 @@ FOREIGN KEY (IDALUNO) REFERENCES ALUNO(IDALUNO)
 
 
 
+INSERT INTO `ALUNO` (
+    `nome`, `datanascimento`, `idade`, `escolaridade`, `nomeescola`, `horarioestuda`, 
+    `nomeresponsavel`, `telefoneresponsavel`, `foto`, `rua`, `bairro`, `cep`, `cidade`, 
+    `estado`, `pais`, `isvisitante`, `datahora`
+) VALUES (
+     'John Doe', '1995-08-14', 28, 'High School', 'Sample School', 'Morning', 
+    'Jane Doe', '123-456-7890', 'john_doe.jpg', '123 Main Street', 'Downtown', '12345', 
+    'Sampleville', 'CA', 'United States', 0, NOW()
+);
 
 
-
+SELECT * from ALUNO;
 
 
 
