@@ -2,40 +2,27 @@
 
 header('Access-Control-Allow-Origin: *');
 include_once './DBConnection.php';
-
-
-/**
- * 
- * IDALUNO INT PRIMARY KEY AUTO_INCREMENT,
-    NOME VARCHAR(200) NOT NULL,
-    DATANASCIMENTO DATE,
-    IDADE INT,
-    ESCOLARIDADE VARCHAR(20),
-    NOMEESCOLA VARCHAR(50),
-    HORARIOESTUDA VARCHAR(10),
-    NOMERESPONSAVEL VARCHAR(100),
-    TELEFONERESPONSAVEL VARCHAR(15),
-    INSTAGRAMRESPONSAVEL VARCHAR(50),
-    FOTO TEXT,
-    RUA VARCHAR(200),
-    BAIRRO VARCHAR(200),
-    CEP VARCHAR(9),
-    CIDADE VARCHAR(200),
-    ESTADO VARCHAR(200),
-    ISVISITANTE TINYINT,
-    PAIS VARCHAR(200)
- */
-
+if (!isset($_POST['auth'])) {
+    http_response_code(400); // Set HTTP status code to 400
+    echo json_encode(array('error' => 'Token autenticador não definido'));
+    return;
+}
+if ($_POST['auth'] != $AUTH) {
+    http_response_code(400); // Set HTTP status code to 400
+    echo json_encode(array('error' => 'Token autenticador inválido'));
+    return;
+}
 if (
-    isset($_POST['NOME']) && isset($_POST['DATANASCIMENTO']) && isset($_POST['IDADE']) &&
+    isset($_POST['IDALUNO']) && isset($_POST['NOME']) && isset($_POST['DATANASCIMENTO']) && isset($_POST['IDADE']) &&
     isset($_POST['ESCOLARIDADE']) && isset($_POST['NOMEESCOLA']) && isset($_POST['HORARIOESTUDA']) &&
     isset($_POST['NOMERESPONSAVEL']) && isset($_POST['TELEFONERESPONSAVEL']) && isset($_POST['FOTO']) &&
     isset($_POST['RUA']) && isset($_POST['BAIRRO']) && isset($_POST['CEP']) &&
-    isset($_POST['CIDADE']) && isset($_POST['ESTADO']) && isset($_POST['PAIS']) && isset($_POST['ISVISITANTE']) 
+    isset($_POST['CIDADE']) && isset($_POST['ESTADO']) && isset($_POST['PAIS']) && isset($_POST['ISVISITANTE'])
 
 
 ) {
     $formData = array(
+        'IDALUNO' => isset($_POST['IDALUNO']),
         'NOME' => isset($_POST['NOME']),
         'DATANASCIMENTO' => isset($_POST['DATANASCIMENTO']),
         'IDADE' => isset($_POST['IDADE']),
@@ -56,5 +43,11 @@ if (
 }
 
 $db = new DBConnection();
+$result = $db->updateAluno($formData);
 
-echo json_encode($db->updateAluno($formData));
+if ($result) {
+    echo json_encode($result);
+} else {
+    http_response_code(400); // Set HTTP status code to 400
+    echo json_encode(array('error' => 'Erro ao atualizar Aluno - Cod: ' + $_POST['idaluno']));
+}

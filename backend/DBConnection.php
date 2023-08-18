@@ -77,7 +77,7 @@ class DBConnection
     public function selectAlunosByID($id)
     {
         $pdo = $this->returnConnection();
-        $stmt = $pdo->query("SELECT * FROM ALUNO WHERE id =" . $id);
+        $stmt = $pdo->query("SELECT * FROM ALUNO WHERE idaluno ='" . $id . "'");
         $user = $stmt->fetch();
         return $user;
     }
@@ -104,11 +104,11 @@ class DBConnection
             `pais` = :pais,
             `isvisitante` = :isvisitante,
             `datahora` = :datahora
-            WHERE `id` = :id');
+            WHERE `idaluno` = :idaluno');
 
             $stmt->execute(
                 array(
-                    ':id' => $formData['ID'],
+                    ':idaluno' => $formData['IDALUNO'],
                     // Assuming you have an 'ID' field in your form data
                     ':nome' => $formData['NOME'],
                     ':datanascimento' => $formData['DATANASCIMENTO'],
