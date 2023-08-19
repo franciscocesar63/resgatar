@@ -78,7 +78,7 @@ class DBConnection
     {
         $pdo = $this->returnConnection();
         $stmt = $pdo->query("SELECT * FROM ALUNO WHERE idaluno ='" . $id . "'");
-        $user = $stmt->fetch();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
         return $user;
     }
 
