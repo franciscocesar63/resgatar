@@ -17,34 +17,18 @@ if ($authorizationHeader && preg_match('/Bearer\s+(.*)/', $authorizationHeader, 
         return;
     }
 
-    if (
-        isset($_POST['NOME']) && isset($_POST['DATANASCIMENTO']) && isset($_POST['IDADE']) &&
-        isset($_POST['ESCOLARIDADE']) && isset($_POST['NOMEESCOLA']) && isset($_POST['HORARIOESTUDA']) &&
-        isset($_POST['NOMERESPONSAVEL']) && isset($_POST['TELEFONERESPONSAVEL']) && isset($_POST['FOTO']) &&
-        isset($_POST['RUA']) && isset($_POST['BAIRRO']) && isset($_POST['CEP']) &&
-        isset($_POST['CIDADE']) && isset($_POST['ESTADO']) && isset($_POST['PAIS']) && isset($_POST['ISVISITANTE'])
-    ) {
-        $formData = array(
-            'NOME' => isset($_POST['NOME']),
-            'DATANASCIMENTO' => isset($_POST['DATANASCIMENTO']),
-            'IDADE' => isset($_POST['IDADE']),
-            'ESCOLARIDADE' => isset($_POST['ESCOLARIDADE']),
-            'NOMEESCOLA' => isset($_POST['NOMEESCOLA']),
-            'HORARIOESTUDA' => isset($_POST['HORARIOESTUDA']),
-            'NOMERESPONSAVEL' => isset($_POST['NOMERESPONSAVEL']),
-            'TELEFONERESPONSAVEL' => isset($_POST['TELEFONERESPONSAVEL']),
-            'FOTO' => isset($_POST['FOTO']),
-            'RUA' => isset($_POST['RUA']),
-            'BAIRRO' => isset($_POST['BAIRRO']),
-            'CEP' => isset($_POST['CEP']),
-            'CIDADE' => isset($_POST['CIDADE']),
-            'ESTADO' => isset($_POST['ESTADO']),
-            'PAIS' => isset($_POST['PAIS']),
-            'ISVISITANTE' => isset($_POST['ISVISITANTE'])
-        );
+    $data = json_decode(file_get_contents('php://input'), true);
 
+    if (
+        $data &&
+        isset($data['NOME']) && isset($data['DATANASCIMENTO']) && isset($data['IDADE']) &&
+        isset($data['ESCOLARIDADE']) && isset($data['NOMEESCOLA']) && isset($data['HORARIOESTUDA']) &&
+        isset($data['NOMERESPONSAVEL']) && isset($data['TELEFONERESPONSAVEL']) && isset($data['FOTO']) &&
+        isset($data['RUA']) && isset($data['BAIRRO']) && isset($data['CEP']) &&
+        isset($data['CIDADE']) && isset($data['ESTADO']) && isset($data['PAIS']) && isset($data['ISVISITANTE'])
+    ) {
         $db = new DBConnection();
-        $result = $db->insertAluno($formData);
+        $result = $db->insertAluno($data);
 
         if ($result) {
             echo json_encode($result);
@@ -53,8 +37,10 @@ if ($authorizationHeader && preg_match('/Bearer\s+(.*)/', $authorizationHeader, 
             echo json_encode(array('error' => 'Erro ao inserir aluno.'));
         }
     } else {
-        http_response_code(400); // Set HTTP status code to 400
-        echo json_encode(array('error' => 'Dados incompletos.'));
+        $missingIndexes = findMissingIndexes($data);
+        http_response_code(400); // Unauthorized
+        echo json_encode(array('error' => 'Campos faltando!', 'campos' => implode(', ', $missingIndexes)));
+        return;
     }
 
 } else {
@@ -62,11 +48,42 @@ if ($authorizationHeader && preg_match('/Bearer\s+(.*)/', $authorizationHeader, 
     echo json_encode(array('error' => 'Cabeçalho de autorização ausente ou inválido.'));
 }
 
-
 function validarToken($token, $auth)
 {
     if ($token == $auth) {
         return true;
     }
     return false;
+}
+
+function findMissingIndexes($data)
+{
+    $missingIndexes = [];
+
+    $requiredIndexes = [
+        'NOME',
+        'DATANASCIMENTO',
+        'IDADE',
+        'ESCOLARIDADE',
+        'NOMEESCOLA',
+        'HORARIOESTUDA',
+        'NOMERESPONSAVEL',
+        'TELEFONERESPONSAVEL',
+        'FOTO',
+        'RUA',
+        'BAIRRO',
+        'CEP',
+        'CIDADE',
+        'ESTADO',
+        'PAIS',
+        'ISVISITANTE'
+    ];
+
+    foreach ($requiredIndexes as $index) {
+        if (!isset($data[$index])) {
+            $missingIndexes[] = $index;
+        }
+    }
+
+    return $missingIndexes;
 }

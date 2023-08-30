@@ -16,36 +16,41 @@ if ($authorizationHeader && preg_match('/Bearer\s+(.*)/', $authorizationHeader, 
         return;
     }
 
-
+    $data = json_decode(file_get_contents('php://input'), true);
 
     if (
-        isset($_POST['IDALUNO']) && isset($_POST['NOME']) && isset($_POST['DATANASCIMENTO']) && isset($_POST['IDADE']) &&
-        isset($_POST['ESCOLARIDADE']) && isset($_POST['NOMEESCOLA']) && isset($_POST['HORARIOESTUDA']) &&
-        isset($_POST['NOMERESPONSAVEL']) && isset($_POST['TELEFONERESPONSAVEL']) && isset($_POST['FOTO']) &&
-        isset($_POST['RUA']) && isset($_POST['BAIRRO']) && isset($_POST['CEP']) &&
-        isset($_POST['CIDADE']) && isset($_POST['ESTADO']) && isset($_POST['PAIS']) && isset($_POST['ISVISITANTE'])
+        isset($data['IDALUNO']) && isset($data['NOME']) && isset($data['DATANASCIMENTO']) && isset($data['IDADE']) &&
+        isset($data['ESCOLARIDADE']) && isset($data['NOMEESCOLA']) && isset($data['HORARIOESTUDA']) &&
+        isset($data['NOMERESPONSAVEL']) && isset($data['TELEFONERESPONSAVEL']) && isset($data['FOTO']) &&
+        isset($data['RUA']) && isset($data['BAIRRO']) && isset($data['CEP']) &&
+        isset($data['CIDADE']) && isset($data['ESTADO']) && isset($data['PAIS']) && isset($data['ISVISITANTE'])
 
 
     ) {
         $formData = array(
-            'IDALUNO' => isset($_POST['IDALUNO']),
-            'NOME' => isset($_POST['NOME']),
-            'DATANASCIMENTO' => isset($_POST['DATANASCIMENTO']),
-            'IDADE' => isset($_POST['IDADE']),
-            'ESCOLARIDADE' => isset($_POST['ESCOLARIDADE']),
-            'NOMEESCOLA' => isset($_POST['NOMEESCOLA']),
-            'HORARIOESTUDA' => isset($_POST['HORARIOESTUDA']),
-            'NOMERESPONSAVEL' => isset($_POST['NOMERESPONSAVEL']),
-            'TELEFONERESPONSAVEL' => isset($_POST['TELEFONERESPONSAVEL']),
-            'FOTO' => isset($_POST['FOTO']),
-            'RUA' => isset($_POST['RUA']),
-            'BAIRRO' => isset($_POST['BAIRRO']),
-            'CEP' => isset($_POST['CEP']),
-            'CIDADE' => isset($_POST['CIDADE']),
-            'ESTADO' => isset($_POST['ESTADO']),
-            'PAIS' => isset($_POST['PAIS']),
-            'ISVISITANTE' => isset($_POST['ISVISITANTE'])
+            'IDALUNO' => isset($data['IDALUNO']),
+            'NOME' => isset($data['NOME']),
+            'DATANASCIMENTO' => isset($data['DATANASCIMENTO']),
+            'IDADE' => isset($data['IDADE']),
+            'ESCOLARIDADE' => isset($data['ESCOLARIDADE']),
+            'NOMEESCOLA' => isset($data['NOMEESCOLA']),
+            'HORARIOESTUDA' => isset($data['HORARIOESTUDA']),
+            'NOMERESPONSAVEL' => isset($data['NOMERESPONSAVEL']),
+            'TELEFONERESPONSAVEL' => isset($data['TELEFONERESPONSAVEL']),
+            'FOTO' => isset($data['FOTO']),
+            'RUA' => isset($data['RUA']),
+            'BAIRRO' => isset($data['BAIRRO']),
+            'CEP' => isset($data['CEP']),
+            'CIDADE' => isset($data['CIDADE']),
+            'ESTADO' => isset($data['ESTADO']),
+            'PAIS' => isset($data['PAIS']),
+            'ISVISITANTE' => isset($data['ISVISITANTE'])
         );
+    } else {
+        $missingIndexes = findMissingIndexes($data);
+        http_response_code(400); // Unauthorized
+        echo json_encode(array('error' => 'Campos faltando!', 'campos' => implode(', ', $missingIndexes)));
+        return;
     }
 
     $db = new DBConnection();
@@ -55,7 +60,7 @@ if ($authorizationHeader && preg_match('/Bearer\s+(.*)/', $authorizationHeader, 
         echo json_encode($result);
     } else {
         http_response_code(400); // Set HTTP status code to 400
-        echo json_encode(array('error' => 'Erro ao atualizar Aluno - Cod: ' + $_POST['idaluno']));
+        echo json_encode(array('error' => 'Erro ao atualizar Aluno - Cod: ' + $data['IDALUNO']));
     }
 
 } else {
@@ -70,4 +75,37 @@ function validarToken($token, $auth)
         return true;
     }
     return false;
+}
+
+function findMissingIndexes($data)
+{
+    $missingIndexes = [];
+
+    $requiredIndexes = [
+        'IDALUNO',
+        'NOME',
+        'DATANASCIMENTO',
+        'IDADE',
+        'ESCOLARIDADE',
+        'NOMEESCOLA',
+        'HORARIOESTUDA',
+        'NOMERESPONSAVEL',
+        'TELEFONERESPONSAVEL',
+        'FOTO',
+        'RUA',
+        'BAIRRO',
+        'CEP',
+        'CIDADE',
+        'ESTADO',
+        'PAIS',
+        'ISVISITANTE'
+    ];
+
+    foreach ($requiredIndexes as $index) {
+        if (!isset($data[$index])) {
+            $missingIndexes[] = $index;
+        }
+    }
+
+    return $missingIndexes;
 }

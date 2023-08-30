@@ -30,7 +30,7 @@ class DBConnection
     {
         try {
             $pdo = $this->returnConnection();
-            $stmt = $pdo->prepare('INSERT INTO `ALUNO`(`id`, `nome`, `datanascimento`, `idade`, `escolaridade`, `nomeescola`, `horarioestuda`, `nomeresponsavel`, `telefoneresponsavel`, `foto`, `rua`, `bairro`, `cep`, `cidade`, `estado`, `pais`, `isvisitante`, `datahora`) VALUES
+            $stmt = $pdo->prepare('INSERT INTO `ALUNO`(`idaluno`, `nome`, `datanascimento`, `idade`, `escolaridade`, `nomeescola`, `horarioestuda`, `nomeresponsavel`, `telefoneresponsavel`, `foto`, `rua`, `bairro`, `cep`, `cidade`, `estado`, `pais`, `isvisitante`, `datahora`) VALUES
         (null, :nome, :datanascimento, :idade, :escolaridade, :nomeescola, :horarioestuda, :nomeresponsavel, :telefoneresponsavel, :foto, :rua, :bairro, :cep, :cidade, :estado, :pais, :isvisitante, :datahora)');
 
             $stmt->execute(
@@ -51,17 +51,17 @@ class DBConnection
                     ':estado' => $formData['ESTADO'],
                     ':pais' => $formData['PAIS'],
                     ':isvisitante' => $formData['ISVISITANTE'],
-                    ':datahora' => date('Y-m-d H:i:s') // Adicione a data e hora atual aqui
+                    ':datahora' => date('Y-m-d H:i:s')
                 )
             );
 
             if ($stmt->rowCount() > 0) {
-                return "success";
+                return ['status' => "success"];
             } else {
-                return 'error';
+                return ['error' => 'Houve um erro ao inserir aluno no banco'];
             }
         } catch (\Throwable $th) {
-            return "error";
+            return ['error' => 'Houve um erro ao inserir aluno no banco', 'exception' => $th];
         }
     }
 
@@ -131,12 +131,12 @@ class DBConnection
             );
 
             if ($stmt->rowCount() > 0) {
-                return "success";
+                return ['status' => "success"];
             } else {
-                return 'error';
+                return ['error' => "Houve algum erro ao realizar update do Aluno"];
             }
         } catch (\Throwable $th) {
-            return "error";
+            return ['error' => 'Houve um erro ao realizar update aluno no banco', 'exception' => $th];
         }
     }
 }
