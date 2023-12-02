@@ -7,7 +7,8 @@ class AlunoService {
   AlunoService();
 
   Future<List<Aluno>> buscaAlunos() async {
-    final response = await http.get(Uri.parse("https://api.resgatarsousa.com.br/getAlunos.php"));
+    final response = await http
+        .get(Uri.parse("https://api.resgatarsousa.com.br/getAlunos.php"));
     if (response.statusCode == 200) {
       final List<dynamic> jsonData = json.decode(response.body);
       var x = jsonData.map((e) => Aluno.fromMap(e)).toList();
