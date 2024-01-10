@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f5e65a38-16e3-4879-89b1-df4357a57b3d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/resgatar/android/app/src/main/res/drawable-hdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resgatar/android/app/src/main/res/drawable-mdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resgatar/android/app/src/main/res/drawable-xhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resgatar/android/app/src/main/res/drawable-xxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resgatar/android/app/src/main/res/drawable-xxxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resgatar/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resgatar/android/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resgatar/assets/logo 1090.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resgatar/assets/logo 156.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resgatar/assets/logo 256.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resgatar/assets/logo 500.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resgatar/lib/routes/routes.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resgatar/lib/view/aluno_list_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mobile.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobile.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/android/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/lib/service/aluno_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/lib/service/aluno_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/lib/view/cadastrar_aluno_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/lib/view/cadastrar_aluno_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/lib/view/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/lib/view/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/lib/view/lista_alunos_matriculados_view.dart" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/lib/view/lista_alunos_matriculados_view.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/linux/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/linux/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/linux/flutter/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/linux/flutter/generated_plugin_registrant.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/linux/flutter/generated_plugins.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/linux/main.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/linux/my_application.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/linux/my_application.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/resgatar/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/web/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/web/icons/Icon-192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/web/icons/Icon-512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/web/icons/Icon-maskable-192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/web/icons/Icon-maskable-512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/web/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/web/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/flutter/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/flutter/generated_plugin_registrant.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/flutter/generated_plugins.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/runner/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/runner/Runner.rc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/runner/flutter_window.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/runner/flutter_window.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/runner/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/runner/resource.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/runner/resources/app_icon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/runner/runner.exe.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/runner/utils.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/runner/utils.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/runner/win32_window.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resgatar/windows/runner/win32_window.h" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2ajv703ozkqgb5R5VEXZ8o2XUBI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f5e65a38-16e3-4879-89b1-df4357a57b3d" name="Changes" comment="" />
+      <created>1704844633746</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704844633746</updated>
+    </task>
+    <servers />
+  </component>
+</project>

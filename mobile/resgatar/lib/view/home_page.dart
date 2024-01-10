@@ -15,9 +15,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
     counter.addListener(() {
       setState(() {});
     });
@@ -27,28 +25,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '${counter.value}',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                      context, '/lista_alunos_matriculados_view');
-                },
-                icon: Icon(Icons.add))
-          ],
+        title: Text(
+          widget.title,
+          style: TextStyle(color: Colors.white),
         ),
       ),
+      body: _body(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, '/cadastrar_aluno_view');
@@ -56,6 +38,45 @@ class _HomePageState extends State<HomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  Widget _body() {
+    return Container(
+      color: Colors.black,
+      width: double.infinity,
+      child: Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Image.asset("assets/logo 1090.png"),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/lista_alunos_matriculados_view');
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Turminha Resgatar: ",
+                  style: TextStyle(color: Colors.white),
+                ),
+                IconButton(
+                    color: Colors.white,
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, '/lista_alunos_matriculados_view');
+                    },
+                    icon: const Icon(Icons.child_care))
+              ],
+            ),
+          ),
+          const Text(
+            "Let's Bora",
+            style: TextStyle(color: Colors.white),
+          ),
+        ],
+      ),
     );
   }
 }

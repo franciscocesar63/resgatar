@@ -37,17 +37,28 @@ dependencies:
   uno: ^1.1.1
   mocktail: ^1.0.0
   http: ^0.13.5
+  provider: ^6.0.2
+#  path_provider: ^2.1.2
+  cached_network_image: ^3.2.0
+  image_picker: ^1.0.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+#  flutter_launcher_icons: ^0.13.1
+#
+#flutter_launcher_icons:
+#  #  image_path: "assets/images/icon-128x128.png"
+#  image_path_android: "assets/logo 156.jpg"
+#  android: true # can specify file name here e.g. "ic_launcher"
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -61,8 +72,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
