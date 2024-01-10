@@ -40,6 +40,10 @@ dependencies:
   path_provider: ^2.1.2
   image_picker: ^1.0.7
   cached_network_image: ^3.3.1
+  amplify_storage_s3: ^1.6.1
+  amplify_authenticator: ^1.5.2
+  amplify_secure_storage: ^0.4.0+6
+  amplify_flutter: ^1.6.1
 
 dev_dependencies:
   flutter_test:

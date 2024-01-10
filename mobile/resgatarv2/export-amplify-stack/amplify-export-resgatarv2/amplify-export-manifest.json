@@ -1,0 +1,97 @@
+{
+  "stackName": "amplify-resgatarv2-dev-224408",
+  "props": {
+    "templateFile": "root-stack-template.json",
+    "parameters": {
+      "AuthRoleName": "amplify-resgatarv2-dev-224408-authRole",
+      "UnauthRoleName": "amplify-resgatarv2-dev-224408-unauthRole",
+      "DeploymentBucketName": "amplify-resgatarv2-dev-224408-deployment"
+    },
+    "preserveLogicalIds": true,
+    "loadNestedStacks": {
+      "authresgatarv2ab55d4f7": {
+        "templateFile": "auth\\resgatarv2ab55d4f7\\resgatarv2ab55d4f7-cloudformation-template.json",
+        "parameters": {
+          "identityPoolName": "resgatarv2ab55d4f7_identitypool_ab55d4f7",
+          "allowUnauthenticatedIdentities": false,
+          "resourceNameTruncated": "resgatab55d4f7",
+          "userPoolName": "resgatarv2ab55d4f7_userpool_ab55d4f7",
+          "autoVerifiedAttributes": [
+            "email"
+          ],
+          "mfaConfiguration": "OFF",
+          "mfaTypes": [
+            "SMS Text Message"
+          ],
+          "smsAuthenticationMessage": "Your authentication code is {####}",
+          "smsVerificationMessage": "Your verification code is {####}",
+          "emailVerificationSubject": "Your verification code",
+          "emailVerificationMessage": "Your verification code is {####}",
+          "defaultPasswordPolicy": false,
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": [],
+          "requiredAttributes": [
+            "email"
+          ],
+          "aliasAttributes": [],
+          "userpoolClientGenerateSecret": false,
+          "userpoolClientRefreshTokenValidity": 30,
+          "userpoolClientWriteAttributes": [
+            "email"
+          ],
+          "userpoolClientReadAttributes": [
+            "email"
+          ],
+          "userpoolClientLambdaRole": "resgatab55d4f7_userpoolclient_lambda_role",
+          "userpoolClientSetAttributes": false,
+          "sharedId": "ab55d4f7",
+          "resourceName": "resgatarv2ab55d4f7",
+          "authSelections": "identityPoolAndUserPool",
+          "useDefault": "default",
+          "usernameAttributes": [
+            "email"
+          ],
+          "userPoolGroupList": [],
+          "serviceName": "Cognito",
+          "usernameCaseSensitive": false,
+          "useEnabledMfas": true,
+          "breakCircularDependency": true,
+          "dependsOn": [],
+          "env": "dev"
+        },
+        "preserveLogicalIds": true,
+        "loadNestedStacks": {}
+      },
+      "storageresgatarstorage": {
+        "templateFile": "storage\\resgatarstorage\\cloudformation-template.json",
+        "parameters": {
+          "bucketName": "resgatar",
+          "selectedGuestPermissions": [],
+          "selectedAuthenticatedPermissions": [
+            "s3:PutObject",
+            "s3:GetObject",
+            "s3:ListBucket"
+          ],
+          "s3PrivatePolicy": "Private_policy_a7c7bd10",
+          "s3ProtectedPolicy": "Protected_policy_a7c7bd10",
+          "s3PublicPolicy": "Public_policy_a7c7bd10",
+          "s3ReadPolicy": "read_policy_a7c7bd10",
+          "s3UploadsPolicy": "Uploads_policy_a7c7bd10",
+          "authPolicyName": "s3_amplify_a7c7bd10",
+          "unauthPolicyName": "s3_amplify_a7c7bd10",
+          "AuthenticatedAllowList": "ALLOW",
+          "GuestAllowList": "DISALLOW",
+          "s3PermissionsAuthenticatedPrivate": "s3:PutObject,s3:GetObject",
+          "s3PermissionsAuthenticatedProtected": "s3:PutObject,s3:GetObject",
+          "s3PermissionsAuthenticatedPublic": "s3:PutObject,s3:GetObject",
+          "s3PermissionsAuthenticatedUploads": "s3:PutObject",
+          "s3PermissionsGuestPublic": "DISALLOW",
+          "s3PermissionsGuestUploads": "DISALLOW",
+          "env": "dev"
+        },
+        "preserveLogicalIds": true,
+        "loadNestedStacks": {}
+      }
+    }
+  }
+}

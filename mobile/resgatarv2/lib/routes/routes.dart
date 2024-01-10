@@ -1,6 +1,5 @@
 import '../view/cadastrar_aluno_view.dart';
 
-import '../view/aluno_list_view.dart';
 import '../view/home_page.dart';
 import '../view/lista_alunos_matriculados_view.dart';
 

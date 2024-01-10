@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-resgatarv2-dev-224408-authRole",
+      "UnauthRoleArn": "arn:aws:iam::283698552019:role/amplify-resgatarv2-dev-224408-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::283698552019:role/amplify-resgatarv2-dev-224408-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-resgatarv2-dev-224408-deployment",
+      "UnauthRoleName": "amplify-resgatarv2-dev-224408-unauthRole",
+      "StackName": "amplify-resgatarv2-dev-224408",
+      "StackId": "arn:aws:cloudformation:us-east-1:283698552019:stack/amplify-resgatarv2-dev-224408/c1421e30-af59-11ee-9ca9-0ab81a43f80f",
+      "AmplifyAppId": "d28i3i0wpmzi99"
+    },
+    "categories": {
+      "storage": {
+        "resgatarstorage": {}
+      }
+    }
+  }
+}

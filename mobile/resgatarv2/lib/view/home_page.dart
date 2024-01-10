@@ -1,5 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+// import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:resgatarv2/util/amplify/amplify.dart';
+import 'package:resgatarv2/util/image_util.dart';
+
 import '../controller/counter_controller.dart';
+import '../util/amplify/amplify.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -32,8 +40,15 @@ class _HomePageState extends State<HomePage> {
       ),
       body: _body(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/cadastrar_aluno_view');
+        onPressed: () async {
+          // AWSFile imagem = AWSFile.fromPath("assets/logo 156.jpg");
+          // Image image = const Image.asset('assets/logo 156.jpg');
+          File file = await ImageUtil.imageToFile(imageName: 'logo 156', ext: 'jpg');
+          AmplifyUtil.uploadIOFile(file);
+          // S3Connector.enviarFotoS3(imagem);
+          print("foi");
+
+          // Navigator.pushNamed(context, '/cadastrar_aluno_view');
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),

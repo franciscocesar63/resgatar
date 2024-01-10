@@ -126,6 +126,7 @@ class _ListaAlunosMatriculadosViewState
 
   Widget _floatingActionButton() {
     return FloatingActionButton(
+      backgroundColor: Theme.of(context).primaryColor,
       child: const Icon(
         Icons.add,
         color: Colors.white,

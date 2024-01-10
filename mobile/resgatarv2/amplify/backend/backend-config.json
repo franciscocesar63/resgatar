@@ -1,0 +1,10 @@
+{
+  "auth": {},
+  "storage": {
+    "resgatarstorage": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
+  }
+}

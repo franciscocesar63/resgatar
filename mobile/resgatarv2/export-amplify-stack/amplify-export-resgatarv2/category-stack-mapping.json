@@ -1,0 +1,12 @@
+[
+  {
+    "category": "auth",
+    "resourceName": "resgatarv2ab55d4f7",
+    "service": "Cognito"
+  },
+  {
+    "category": "storage",
+    "resourceName": "resgatarstorage",
+    "service": "S3"
+  }
+]
