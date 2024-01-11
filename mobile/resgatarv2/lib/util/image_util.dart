@@ -14,4 +14,10 @@ class ImageUtil {
         bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes));
     return file;
   }
+
+  static Future<File> assetToFile(String assetPath) async {
+    ByteData data = await rootBundle.load(assetPath);
+    List<int> bytes = data.buffer.asUint8List();
+    return await File("").writeAsBytes(bytes);
+  }
 }

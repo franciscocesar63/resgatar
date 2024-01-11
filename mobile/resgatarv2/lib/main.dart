@@ -1,14 +1,9 @@
-import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:flutter/material.dart';
 
 import '../routes/routes.dart';
-import 'util/amplify/amplify.dart';
 import 'util/color.dart';
 
 Future<void> main() async {
-  // await AmplifyUtil.getFileProperties();
-  WidgetsFlutterBinding.ensureInitialized();
-  await AmplifyUtil.configureAmplify();
   runApp(const MyApp());
 }
 

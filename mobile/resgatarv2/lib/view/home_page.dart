@@ -1,13 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-// import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:resgatarv2/util/amplify/amplify.dart';
-import 'package:resgatarv2/util/image_util.dart';
+import 'package:http/http.dart';
+import 'package:resgatarv2/service/aluno_service.dart';
 
 import '../controller/counter_controller.dart';
-import '../util/amplify/amplify.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key, required this.title}) : super(key: key);
@@ -43,9 +40,12 @@ class _HomePageState extends State<HomePage> {
         onPressed: () async {
           // AWSFile imagem = AWSFile.fromPath("assets/logo 156.jpg");
           // Image image = const Image.asset('assets/logo 156.jpg');
-          File file = await ImageUtil.imageToFile(imageName: 'logo 156', ext: 'jpg');
-          AmplifyUtil.uploadIOFile(file);
-          // S3Connector.enviarFotoS3(imagem);
+          // File file = await ImageUtil.assetToFile('/data/user/0/com.resgatarsousa.resgatarv2/cache/2bd351d7-440c-4797-a38a-bb07966bec44/IMG_20240111_010410.jpg');
+          File file = File(
+              '/data/user/0/com.resgatarsousa.resgatarv2/cache/2bd351d7-440c-4797-a38a-bb07966bec44/IMG_20240111_010410.jpg');
+          Response enviarArquivo1 =
+              await AlunoService.enviarArquivo1(file, "jpg");
+
           print("foi");
 
           // Navigator.pushNamed(context, '/cadastrar_aluno_view');

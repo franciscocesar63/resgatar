@@ -151,8 +151,9 @@ class _CadastrarAlunoViewState extends State<CadastrarAlunoView> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
-                      // Chame a função para salvar o aluno no banco de dados ou onde for necessário
-                    }
+                      print(_imageFile);
+                      print("cadastrando....");
+                     }
                   },
                   child: Text('Cadastrar'),
                 ),
