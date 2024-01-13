@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import '../model/aluno_model.dart';
 
 import '../controller/lista_alunos_matriculados_controller.dart';
+import '../model/aluno_model.dart';
 
 class ListaAlunosMatriculadosView extends StatefulWidget {
   final ListaAlunosMatriculadosController controller =
@@ -65,6 +65,22 @@ class _ListaAlunosMatriculadosViewState
   }
 
   Widget _body() {
+    if (_alunosFiltrados.isEmpty) {
+      return Container(
+        width: double.infinity,
+        color: Colors.black,
+        child: const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.warning, color: Colors.white, size: 50),
+              Text(
+                "Não há alunos cadastrados...",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ]),
+      );
+    }
+
     return Container(
       color: Colors.black,
       child: ListView.builder(
@@ -132,7 +148,9 @@ class _ListaAlunosMatriculadosViewState
         color: Colors.white,
       ),
       onPressed: () {
-        Navigator.pushNamed(context, '/cadastrar_aluno_view');
+        Navigator.pushNamed(context, '/cadastrar_aluno_view').then((value) {
+          _updateAlunosList();
+        });
       },
     );
   }
