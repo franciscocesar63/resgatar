@@ -108,4 +108,30 @@ class AlunoService {
       return Response('Erro ao enviar o arquivo: $e', 500);
     }
   }
+
+  Future<bool> cadastraAluno(Aluno aluno) async {
+    File file = File(aluno.foto);
+    Response responseFoto = await AlunoService.enviarArquivo1(file, "jpg");
+    if (responseFoto.statusCode != 200) {
+      return false;
+    }
+    Map<String, dynamic> data = json.decode(responseFoto.body);
+    aluno.foto = "$host/${data['filePath']}";
+
+    //gera o json a ser enviado:
+    String jsonString = aluno.toJson();
+
+    // Cria a requisição HTTP com o método POST
+    final String apiUrl = '$host/insertAluno.php';
+    final response = await http.post(
+      Uri.parse(apiUrl),
+      headers: {
+        'Authorization': 'Bearer $token',
+        'Content-Type': 'application/json',
+      },
+      body: jsonString,
+    );
+
+    return response.statusCode == 200;
+  }
 }

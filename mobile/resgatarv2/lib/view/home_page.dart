@@ -38,17 +38,7 @@ class _HomePageState extends State<HomePage> {
       body: _body(),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          // AWSFile imagem = AWSFile.fromPath("assets/logo 156.jpg");
-          // Image image = const Image.asset('assets/logo 156.jpg');
-          // File file = await ImageUtil.assetToFile('/data/user/0/com.resgatarsousa.resgatarv2/cache/2bd351d7-440c-4797-a38a-bb07966bec44/IMG_20240111_010410.jpg');
-          File file = File(
-              '/data/user/0/com.resgatarsousa.resgatarv2/cache/2bd351d7-440c-4797-a38a-bb07966bec44/IMG_20240111_010410.jpg');
-          Response enviarArquivo1 =
-              await AlunoService.enviarArquivo1(file, "jpg");
-
-          print("foi");
-
-          // Navigator.pushNamed(context, '/cadastrar_aluno_view');
+          Navigator.pushNamed(context, '/cadastrar_aluno_view');
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),

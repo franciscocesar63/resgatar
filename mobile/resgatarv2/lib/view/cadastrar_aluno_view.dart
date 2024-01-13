@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:resgatarv2/service/aluno_service.dart';
 
 import '../model/aluno_model.dart';
 
@@ -11,11 +14,14 @@ class CadastrarAlunoView extends StatefulWidget {
 class _CadastrarAlunoViewState extends State<CadastrarAlunoView> {
   final _formKey = GlobalKey<FormState>();
   Aluno _aluno = Aluno.get();
+  AlunoService _service = AlunoService();
   XFile? _imageFile;
+  File _imageTelas = File("");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text('Cadastro de Aluno'),
       ),
@@ -29,13 +35,18 @@ class _CadastrarAlunoViewState extends State<CadastrarAlunoView> {
               children: [
                 GestureDetector(
                   onTap: _captureImage,
-                  child: Image.asset(
-                      _imageFile == null
-                          ? 'assets/logo 256.jpg'
-                          : _imageFile!.path,
-                      width: 160),
+                  child: Image(
+                    image: _imageAberta(),
+                    height: 320,
+                  ),
+                  // child: Image.asset(
+                  //     _imageFile == null
+                  //         ? 'assets/logo 256.jpg'
+                  //         : _imageFile!.path,
+                  //     width: 160),
                 ),
                 TextFormField(
+                  style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(labelText: 'Nome'),
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -55,7 +66,7 @@ class _CadastrarAlunoViewState extends State<CadastrarAlunoView> {
                     return null;
                   },
                   onSaved: (value) =>
-                      _aluno.dataNascimento = DateTime.parse(value!),
+                  _aluno.dataNascimento = DateTime.parse(value!),
                 ),
                 TextFormField(
                   decoration: InputDecoration(labelText: 'Idade'),
@@ -98,7 +109,7 @@ class _CadastrarAlunoViewState extends State<CadastrarAlunoView> {
                 ),
                 TextFormField(
                   decoration:
-                      InputDecoration(labelText: 'Telefone do Responsável'),
+                  InputDecoration(labelText: 'Telefone do Responsável'),
                   keyboardType: TextInputType.phone,
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -110,7 +121,7 @@ class _CadastrarAlunoViewState extends State<CadastrarAlunoView> {
                 ),
                 TextFormField(
                   decoration:
-                      InputDecoration(labelText: 'Instagram do Responsável'),
+                  InputDecoration(labelText: 'Instagram do Responsável'),
                   onSaved: (value) => _aluno.instagramResponsavel = value!,
                 ),
                 TextFormField(
@@ -135,7 +146,8 @@ class _CadastrarAlunoViewState extends State<CadastrarAlunoView> {
                   onSaved: (value) => _aluno.estado = value!,
                 ),
                 CheckboxListTile(
-                  title: Text('É visitante?'),
+
+                  title: Text('É visitante?', style: TextStyle(color: Colors.white),),
                   value: _aluno.isVisitante,
                   onChanged: (value) {
                     setState(() {
@@ -148,12 +160,33 @@ class _CadastrarAlunoViewState extends State<CadastrarAlunoView> {
                   onSaved: (value) => _aluno.pais = value!,
                 ),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
                       print(_imageFile);
-                      print("cadastrando....");
-                     }
+
+                      bool res = await _service.cadastraAluno(_aluno);
+
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text(res ? "Sucesso!" : "Atenção!"),
+                            content: Text(res
+                                ? "Aluno cadastrado!"
+                                : "Erro ao cadastrar o Aluno!"),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text('OK'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
                   },
                   child: Text('Cadastrar'),
                 ),
@@ -167,12 +200,22 @@ class _CadastrarAlunoViewState extends State<CadastrarAlunoView> {
 
   Future<void> _captureImage() async {
     final ImagePicker _picker = ImagePicker();
-    XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    XFile? image = await _picker.pickImage(source: ImageSource.camera);
 
     if (image != null) {
       setState(() {
         _imageFile = image;
+        _aluno.foto = _imageFile!.path;
       });
+    }
+  }
+
+  _imageAberta() {
+    if (_imageFile != null) {
+      return FileImage(File(_imageFile!.path));
+    } else {
+      return const AssetImage(
+          'assets/logo 256.jpg');
     }
   }
 }
