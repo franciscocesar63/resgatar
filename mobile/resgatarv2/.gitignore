@@ -42,6 +42,7 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 /lib/util/amplify/amplifyconfiguration.dart
+/lib/config.dart
 
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend

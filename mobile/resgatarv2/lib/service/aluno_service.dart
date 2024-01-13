@@ -6,11 +6,12 @@ import 'package:http/http.dart';
 
 import '../model/aluno_model.dart';
 
+import '../config.dart';
+
 class AlunoService {
   AlunoService();
 
   static String host = 'https://api.resgatarsousa.com.br';
-  static String token = '208e5ec4e9082c9f1495906f75fa2a9931f2f924';
 
   Future<List<Aluno>> buscaAlunos() async {
     final response = await http.get(
