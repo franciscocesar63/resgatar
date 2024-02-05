@@ -2,6 +2,7 @@ import 'dart:convert';
 
 class Aluno {
   int idAluno;
+  int idTurma;
   String nome;
   DateTime dataNascimento;
   int idade;
@@ -23,6 +24,7 @@ class Aluno {
 
   Aluno({
     required this.idAluno,
+    required this.idTurma,
     required this.nome,
     required this.dataNascimento,
     required this.idade,
@@ -45,6 +47,7 @@ class Aluno {
   factory Aluno.get() {
     return Aluno(
       idAluno: 0,
+      idTurma: -1,
       nome: '',
       dataNascimento: DateTime(1970),
       idade: 0,
@@ -69,6 +72,7 @@ class Aluno {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'IDALUNO': idAluno,
+      'IDTURMA': idTurma,
       'NOME': nome,
       'DATANASCIMENTO': dataNascimento.millisecondsSinceEpoch,
       'IDADE': idade,
@@ -93,6 +97,7 @@ class Aluno {
   factory Aluno.fromMap(Map<String, dynamic> map) {
     return Aluno(
       idAluno: int.tryParse(map['IDALUNO']) as int,
+      idTurma: int.tryParse(map['IDTURMA']) as int,
       nome: map['NOME'] as String,
       dataNascimento: DateTime.parse(map['DATANASCIMENTO']).toLocal(),
       idade: int.tryParse(map['IDADE']) as int,

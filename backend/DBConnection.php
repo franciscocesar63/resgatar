@@ -30,11 +30,12 @@ class DBConnection
     {
         try {
             $pdo = $this->returnConnection();
-            $stmt = $pdo->prepare('INSERT INTO `ALUNO`(`idaluno`, `nome`, `datanascimento`, `idade`, `escolaridade`, `nomeescola`, `horarioestuda`, `nomeresponsavel`, `telefoneresponsavel`, `foto`, `rua`, `bairro`, `cep`, `cidade`, `estado`, `pais`, `isvisitante`, `datahora`) VALUES
-        (null, :nome, :datanascimento, :idade, :escolaridade, :nomeescola, :horarioestuda, :nomeresponsavel, :telefoneresponsavel, :foto, :rua, :bairro, :cep, :cidade, :estado, :pais, :isvisitante, :datahora)');
+            $stmt = $pdo->prepare('INSERT INTO `ALUNO`(`idaluno`, `idturma`, `nome`, `datanascimento`, `idade`, `escolaridade`, `nomeescola`, `horarioestuda`, `nomeresponsavel`, `telefoneresponsavel`, `foto`, `rua`, `bairro`, `cep`, `cidade`, `estado`, `pais`, `isvisitante`, `datahora`) VALUES
+        (null, :idturma, :nome, :datanascimento, :idade, :escolaridade, :nomeescola, :horarioestuda, :nomeresponsavel, :telefoneresponsavel, :foto, :rua, :bairro, :cep, :cidade, :estado, :pais, :isvisitante, :datahora)');
 
             $stmt->execute(
                 array(
+                    ':idturma' => $formData['IDTURMA'],
                     ':nome' => $formData['NOME'],
                     ':datanascimento' => $formData['DATANASCIMENTO'],
                     ':idade' => $formData['IDADE'],
@@ -138,6 +139,16 @@ class DBConnection
         } catch (\Throwable $th) {
             return ['error' => 'Houve um erro ao realizar update aluno no banco', 'exception' => $th];
         }
+    }
+
+
+    public function selectTurmas()
+    {
+        $pdo = $this->returnConnection();
+        $stmt = $pdo->query("SELECT * FROM TURMA");
+
+        $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $user;
     }
 }
 ?>

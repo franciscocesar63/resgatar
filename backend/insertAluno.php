@@ -20,7 +20,7 @@ if ($authorizationHeader && preg_match('/Bearer\s+(.*)/', $authorizationHeader, 
     $data = json_decode(file_get_contents('php://input'), true);
 
     if (
-        $data &&
+        $data && isset($data['IDTURMA']) &&
         isset($data['NOME']) && isset($data['DATANASCIMENTO']) && isset($data['IDADE']) &&
         isset($data['ESCOLARIDADE']) && isset($data['NOMEESCOLA']) && isset($data['HORARIOESTUDA']) &&
         isset($data['NOMERESPONSAVEL']) && isset($data['TELEFONERESPONSAVEL']) && isset($data['FOTO']) &&
@@ -61,6 +61,7 @@ function findMissingIndexes($data)
     $missingIndexes = [];
 
     $requiredIndexes = [
+        'IDTURMA',
         'NOME',
         'DATANASCIMENTO',
         'IDADE',
